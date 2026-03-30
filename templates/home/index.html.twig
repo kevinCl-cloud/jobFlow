@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard
+{% endblock %}
+
+{% block body %}
+
+	<div class="hero-inner">
+		<h3 class="mt fw-bolder">Bonjour kevin</h3>
+		<p class="fw-bolder">Voici un appercu de votre activité</p>
+	</div>
+
+    <div class="container">
+
+        <div class="info-candidature d-flex justify-content-center align-items-center col-sm">
+        <!-- afficher les informations a propos de la candidature -->
+            <div class="d-flex mr-3 candidature-envoyee info">
+                <div class="logo-enveloppe">
+                </div>
+                <div class="nombre-candidature mt-2">
+                    <p class="m-0">12</p>
+                    <p class="m-0">candidature envoyées</p>
+                </div>
+            </div>
+
+            <div class="d-flex mr-3 reponse info">
+                <div class="logo-bulle-chat">
+                </div>
+                <div class="nombre-reponse mt-2">
+                    <p class="m-0">3</p>
+                    <p class="m-0">Réponses</p>
+                </div>
+            </div>
+
+            <div class="d-flex mr-3 entretiens info">
+                <div class="logo-calendrier">
+                </div>
+                <div class="nombre-entretiens mt-2">
+                    <p class="m-0">3</p>
+                    <p class="m-0">Entretiens</p>
+                </div>
+            </div>
+
+            <div class="d-flex sans-reponse info">
+                <div class="logo-horloge">
+                </div>
+                <div class="nombre-non-reponse mt-2">
+                    <p class="m-0">3</p>
+                    <p class="m-0">Sans réponses</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}

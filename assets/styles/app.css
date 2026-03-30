@@ -1,3 +1,130 @@
+:root {
+    --main-bg-color: #eaf6ff;
+    --bouton-couleur: #3D65E6;
+    --couleur-ecriture: #3E6CC3;
+}
+
 body {
-    background-color: skyblue;
+    background-color: var(--main-bg-color);
+    padding: 0;
+}
+
+.navbar {
+    background-color: white;
+    padding: 0px 30px;
+}
+
+.navbar-liste {
+    padding: 0px 50px;
+}
+
+li {
+    padding: 0px 20px;
+    border-radius: 15px;
+}
+
+.inscription-bouton {
+    border-style: solid;
+    border-color: var(--bouton-couleur);
+}
+
+.connexion-bouton {
+    background-color: var(--bouton-couleur);
+}
+
+.connexion-bouton a {
+    color: white
+}
+
+.logo {
+    display: block;
+    width: 150px;
+    height: 80px;
+    background-image: url('../images/logo_jobFlow.png');
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.hero-inner {
+    width: 100%;
+    height: 200px;
+    background-image: url('../images/hero_jobFlow.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 50px 100px;
+}
+
+.hero-inner h3,
+p {
+    color: var(--couleur-ecriture);
+}
+
+.info {
+    width: 224px;
+}
+
+.logo-enveloppe {
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/enveloppe.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -15px 0px;
+}
+
+.candidature-envoyee {
+    background-color: white;
+    margin-top: 20px;
+    padding: 10px;
+    box-shadow: 0px 5px 5px grey;
+}
+
+.reponse {
+    background-color: white;
+    margin-top: 20px;
+    padding: 10px;
+    box-shadow: 0px 5px 5px grey;
+}
+
+.logo-bulle-chat {
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/bulle_chat.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -15px 0px;
+}
+
+.entretiens {
+    background-color: white;
+    margin-top: 20px;
+    padding: 10px;
+    box-shadow: 0px 5px 5px grey;
+}
+
+.logo-calendrier {
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/calendrier.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -15px 0px;
+}
+
+.sans-reponse {
+    background-color: white;
+    margin-top: 20px;
+    padding: 10px;
+    box-shadow: 0px 5px 5px grey;
+}
+
+.logo-horloge {
+    width: 50px;
+    height: 50px;
+    background-image: url('../images/horloge.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -15px 0px;
 }
