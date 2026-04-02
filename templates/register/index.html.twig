@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription!
+{% endblock %}
+{% block body %}
+	<section class="hero-inner-inscription">
+
+		<div class="container d-flex flex-column align-items-center mt-5">
+
+			<div class="card formulaire-inscription align-items-center">
+				<h2 class="mb-4 font-weight-bold titre">Créez votre compte</h2>
+				{{ form_start(form) }}
+				<div class="row mb-1">
+					<div class="col">
+						{{form_label(form.firstName)}}
+						{{ form_widget(form.firstName) }}
+					</div>
+					<div class="col">
+						{{form_label(form.lastName)}}
+						{{ form_widget(form.lastName) }}
+					</div>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</section>
+{% endblock %}
