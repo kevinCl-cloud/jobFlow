@@ -40,7 +40,7 @@ class Offer
     /**
      * @var Collection<int, Apply>
      */
-    #[ORM\OneToMany(targetEntity: Apply::class, mappedBy: 'idOffer', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Apply::class, mappedBy: 'offer', orphanRemoval: true)]
     private Collection $applies;
 
     public function __construct()
@@ -149,7 +149,7 @@ class Offer
     {
         if (!$this->applies->contains($apply)) {
             $this->applies->add($apply);
-            $apply->setIdOffer($this);
+            $apply->setOffer($this);
         }
 
         return $this;
@@ -158,9 +158,8 @@ class Offer
     public function removeApply(Apply $apply): static
     {
         if ($this->applies->removeElement($apply)) {
-            // set the owning side to null (unless already changed)
-            if ($apply->getIdOffer() === $this) {
-                $apply->setIdOffer(null);
+            if ($apply->getOffer() === $this) {
+                $apply->setOffer(null);
             }
         }
 

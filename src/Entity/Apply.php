@@ -17,11 +17,11 @@ class Apply
 
     #[ORM\ManyToOne(inversedBy: 'applies')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?candidateProfile $idProfile = null;
+    private ?CandidateProfile $candidateProfile = null;
 
     #[ORM\ManyToOne(inversedBy: 'applies')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?offer $idOffer = null;
+    private ?Offer $offer = null;
 
     #[ORM\Column(length: 255)]
     private ?string $mailSubject = null;
@@ -40,26 +40,26 @@ class Apply
         return $this->id;
     }
 
-    public function getIdProfile(): ?candidateProfile
+    public function getCandidateProfile(): ?CandidateProfile
     {
-        return $this->idProfile;
+        return $this->candidateProfile;
     }
 
-    public function setIdProfile(?candidateProfile $idProfile): static
+    public function setCandidateProfile(?CandidateProfile $candidateProfile): static
     {
-        $this->idProfile = $idProfile;
+        $this->candidateProfile = $candidateProfile;
 
         return $this;
     }
 
-    public function getIdOffer(): ?offer
+    public function getOffer(): ?Offer
     {
-        return $this->idOffer;
+        return $this->offer;
     }
 
-    public function setIdOffer(?offer $idOffer): static
+    public function setOffer(?Offer $offer): static
     {
-        $this->idOffer = $idOffer;
+        $this->offer = $offer;
 
         return $this;
     }

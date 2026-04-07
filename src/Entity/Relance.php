@@ -16,7 +16,8 @@ class Relance
     private ?int $id = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?apply $idApply = null;
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Apply $apply = null;
 
     #[ORM\Column(length: 255)]
     private ?string $mailSubject = null;
@@ -41,14 +42,14 @@ class Relance
         return $this->id;
     }
 
-    public function getIdApply(): ?apply
+    public function getApply(): ?Apply
     {
-        return $this->idApply;
+        return $this->apply;
     }
 
-    public function setIdApply(?apply $idApply): static
+    public function setApply(?Apply $apply): static
     {
-        $this->idApply = $idApply;
+        $this->apply = $apply;
 
         return $this;
     }

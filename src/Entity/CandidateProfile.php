@@ -18,7 +18,7 @@ class CandidateProfile
 
     #[ORM\OneToOne(inversedBy: 'candidateProfile', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $idUser = null;
+    private ?User $user = null;
 
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $cvPath = null;
@@ -32,7 +32,7 @@ class CandidateProfile
     /**
      * @var Collection<int, Apply>
      */
-    #[ORM\OneToMany(targetEntity: Apply::class, mappedBy: 'idProfile', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Apply::class, mappedBy: 'candidateProfile', orphanRemoval: true)]
     private Collection $applies;
 
     public function __construct()
@@ -45,14 +45,14 @@ class CandidateProfile
         return $this->id;
     }
 
-    public function getIdUser(): ?user
+    public function getUser(): ?User
     {
-        return $this->idUser;
+        return $this->user;
     }
 
-    public function setIdUser(user $idUser): static
+    public function setUser(?User $user): static
     {
-        $this->idUser = $idUser;
+        $this->user = $user;
 
         return $this;
     }
@@ -105,7 +105,7 @@ class CandidateProfile
     {
         if (!$this->applies->contains($apply)) {
             $this->applies->add($apply);
-            $apply->setIdProfile($this);
+            $apply->setCandidateProfile($this);
         }
 
         return $this;
@@ -114,9 +114,8 @@ class CandidateProfile
     public function removeApply(Apply $apply): static
     {
         if ($this->applies->removeElement($apply)) {
-            // set the owning side to null (unless already changed)
-            if ($apply->getIdProfile() === $this) {
-                $apply->setIdProfile(null);
+            if ($apply->getCandidateProfile() === $this) {
+                $apply->setCandidateProfile(null);
             }
         }
 

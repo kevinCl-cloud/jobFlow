@@ -30,6 +30,7 @@ li {
 
 .connexion-bouton {
     background-color: var(--bouton-couleur);
+    color: white
 }
 
 .connexion-bouton a {
