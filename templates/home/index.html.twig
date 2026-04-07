@@ -6,7 +6,7 @@
 {% block body %}
 
 	<div class="hero-inner">
-		<h3 class="mt fw-bolder">Bonjour kevin</h3>
+		<h3 class="mt fw-bolder">Bonjour {{ app.user.firstName| capitalize }}</h3>
 		<p class="fw-bolder">Voici un appercu de votre activité</p>
 	</div>
 

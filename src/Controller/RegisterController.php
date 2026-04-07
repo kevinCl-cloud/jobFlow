@@ -26,7 +26,12 @@ final class RegisterController extends AbstractController
                 $user->setRoles(['ROLE_USER']);
                 $em->persist($user);
                 $em->flush();
-                return $this->redirectToRoute('app_home');
+
+                $this->addFlash(
+                'success',
+                'Votre inscription a été effectuée avec succès.'
+                );
+                return $this->redirectToRoute('app_login');
             } catch (EntityNotFoundException $e) {
                 echo $e;
             }
