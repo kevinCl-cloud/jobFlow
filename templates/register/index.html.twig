@@ -3,30 +3,75 @@
 {% block title %}Inscription!
 {% endblock %}
 {% block body %}
-	<section class="hero-inner-inscription">
+	<section class="hero-inner register-hero">
+		<div class="container register-hero-content">
+			<p class="wizard-overline register-hero-overline">Inscription en 2 etapes</p>
+			<h1 class="register-hero-title">Creez votre profil candidat</h1>
+		</div>
+	</section>
 
-		<div class="container d-flex flex-column align-items-center mt-5">
+	<section class="register-shell">
+		<div class="container d-flex flex-column align-items-center">
+			<div class="card formulaire-card formulaire-register wizard-card" data-registration-wizard data-current-step="{{ currentStep|default(1) }}">
+				<div class="wizard-header">
+					<p class="wizard-overline">Inscription en 2 etapes</p>
+					<h2 class="font-weight-bold titre wizard-heading">Creez votre profil candidat sans perdre le fil</h2>
+				</div>
 
-			<div class="card formulaire-inscription align-items-center">
-				<h2 class="mb-4 font-weight-bold titre">Créez votre compte</h2>
-				{{ form_start(form) }}
-				<div class="row mb-1">
-					<div class="col">
-						{{form_label(form.firstName)}}
-						{{ form_widget(form.firstName) }}
+				<div class="wizard-progress-block" aria-label="Progression de l'inscription">
+					<div class="wizard-progress-track">
+						<div class="wizard-progress-fill" data-progress-fill></div>
 					</div>
-					<div class="col">
-						{{form_label(form.lastName)}}
-						{{ form_widget(form.lastName) }}
+
+					<div class="wizard-step-indicators">
+						<div class="wizard-step-indicator" data-step-indicator="1">
+							<span class="wizard-step-index">1</span>
+							<div>
+								<p class="wizard-step-label">Compte</p>
+								<p class="wizard-step-meta">Identite et acces</p>
+							</div>
+						</div>
+						<div class="wizard-step-indicator" data-step-indicator="2">
+							<span class="wizard-step-index">2</span>
+							<div>
+								<p class="wizard-step-label">Profil</p>
+								<p class="wizard-step-meta">Informations candidat</p>
+							</div>
+						</div>
 					</div>
 				</div>
-				{{ form_end(form) }}
 
-				<p>Vous avez déjà un compte?
-				<a href="{{ path('app_login') }}">Connectez-vous</a>
+				<div class="wizard-panels">
+					<div class="wizard-panel{% if (currentStep|default(1)) == 1 %} is-active{% endif %}" data-step-panel="1" {% if (currentStep|default(1)) != 1 %}hidden{% endif %}>
+						{% if userForm is not null %}
+							{% include 'register/_user_step.html.twig' with {form: userForm} %}
+						{% else %}
+							<div class="wizard-step-summary">
+								<span class="wizard-step-kicker">Etape 1 terminee</span>
+								<h3 class="wizard-step-title">Votre compte est pret</h3>
+								<p class="wizard-step-description">Il ne reste plus qu'a renseigner votre profil candidat pour terminer l'inscription.</p>
+							</div>
+						{% endif %}
+					</div>
+
+					<div class="wizard-panel{% if (currentStep|default(1)) == 2 %} is-active{% endif %}" data-step-panel="2" {% if (currentStep|default(1)) != 2 %}hidden{% endif %}>
+						{% if profileForm is not null %}
+							{% include 'register/_profile_step.html.twig' with {form: profileForm} %}
+						{% else %}
+							<div class="wizard-placeholder">
+								<span class="wizard-step-kicker">Etape 2</span>
+								<h3 class="wizard-step-title">Profil candidat</h3>
+								<p class="wizard-step-description">Une fois votre compte cree, cette zone s'ouvre automatiquement pour vous laisser finaliser votre inscription.</p>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+
+				<p class="wizard-login-link">
+					Vous avez deja un compte?
+					<a href="{{ path('app_login') }}">Connectez-vous</a>
 				</p>
 			</div>
-
 		</div>
 	</section>
 {% endblock %}

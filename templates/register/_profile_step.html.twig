@@ -1,0 +1,47 @@
+{{ form_start(form, {'action': path('app_candidate_profile_create'), 'attr': {
+    'novalidate': 'novalidate',
+    'data-turbo': 'false',
+    'data-registration-step': 'profile',
+    'class': 'wizard-form'
+}}) }}
+    {% if form.vars.errors|length > 0 %}
+        <div class="form-custom-errors">
+            {% for error in form.vars.errors %}
+                <div class="form-custom-error">{{ error.message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="wizard-step-copy">
+        <span class="wizard-step-kicker">Etape 2</span>
+        <h3 class="wizard-step-title">Completez votre profil candidat</h3>
+        <p class="wizard-step-description">Ajoutez votre positionnement professionnel et quelques details utiles avant d'arriver sur votre espace.</p>
+    </div>
+
+    {{ form_row(form.proTitle) }}
+    {{ form_row(form.description) }}
+    {% set cvFileHasErrors = form.cvFile.vars.errors|length > 0 %}
+    <div class="form-group">
+        <div class="cv-upload-field{% if cvFileHasErrors %} is-invalid{% endif %}">
+            <input
+                type="file"
+                id="{{ form.cvFile.vars.id }}"
+                name="{{ form.cvFile.vars.full_name }}"
+                class="cv-upload-input"
+                accept=".pdf,application/pdf"
+                data-file-input="true"
+                data-empty-label="Aucun fichier selectionne"
+                data-file-name-target="{{ form.cvFile.vars.id }}-name"
+            >
+            <label class="cv-upload-button" for="{{ form.cvFile.vars.id }}">Choisir un fichier</label>
+            <span class="cv-upload-name" id="{{ form.cvFile.vars.id }}-name">Aucun fichier selectionne</span>
+        </div>
+        <small class="cv-upload-help">Format accepte : PDF, 1 Mo maximum.</small>
+        {{ form_errors(form.cvFile) }}
+    </div>
+
+    <button class="btn connexion-bouton wizard-submit" type="submit" data-loading-label="Finalisation en cours...">
+        Finaliser mon inscription
+    </button>
+    {{ form_widget(form._token) }}
+{{ form_end(form, {'render_rest': false}) }}

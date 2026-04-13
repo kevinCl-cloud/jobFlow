@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class UserType extends AbstractType
 {
@@ -25,18 +27,32 @@ class UserType extends AbstractType
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options'  => ['label' => 'Mot de passe',
-                 'hash_property_path' => 'password',
-                 'attr' => [ 
-                    'class' => 'form-field',
-                    'placeholder' => 'Entrez votre mot de passe' ]
-                 ],
-                'second_options' => ['label' => 'Confirmez le mot de passe', 
-                'attr' => [
-                    'class' => 'form-field',
-                    'placeholder' => 'Confirmez votre mot de passe']
-                ],
                 'mapped' => false,
+                'invalid_message' => 'Les mots de passe ne correspondent pas.',
+                'constraints' => [
+                    new NotBlank(
+                        message: 'Veuillez saisir un mot de passe.',
+                    ),
+                    new Length(
+                        min: 8,
+                        minMessage: 'Le mot de passe doit contenir au moins {{ limit }} caracteres.',
+                    ),
+                ],
+                'first_options'  => [
+                    'label' => 'Mot de passe',
+                    'hash_property_path' => 'password',
+                    'attr' => [
+                        'class' => 'form-field',
+                        'placeholder' => 'Entrez votre mot de passe',
+                    ],
+                ],
+                'second_options' => [
+                    'label' => 'Confirmez le mot de passe',
+                    'attr' => [
+                        'class' => 'form-field',
+                        'placeholder' => 'Confirmez votre mot de passe',
+                    ],
+                ],
             ])
             ->add('lastName', TextType::class, [
                 'label' => 'Nom',

@@ -1,0 +1,4 @@
+Cet email est deja utilise.: Cet email est deja utilise.
+Les mots de passe ne correspondent pas.: Les mots de passe ne correspondent pas.
+Veuillez saisir un mot de passe.: Veuillez saisir un mot de passe.
+Le mot de passe doit contenir au moins {{ limit }} caracteres.: Le mot de passe doit contenir au moins {{ limit }} caracteres.

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil candidat{% endblock %}
+
+{% block body %}
+	<section class="hero-inner-inscription d-flex justify-content-center align-items-center">
+		<div class="container d-flex flex-column align-items-center">
+			<div class="card formulaire-card formulaire-profile align-items-center">
+				<h2 class="mb-4 font-weight-bold titre">Completez votre profil</h2>
+				{% include 'register/_profile_step.html.twig' with {form: form} %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

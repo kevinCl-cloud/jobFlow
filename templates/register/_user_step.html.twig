@@ -1,0 +1,43 @@
+{{ form_start(form, {'attr': {
+    'novalidate': 'novalidate',
+    'data-turbo': 'false',
+    'data-registration-step': 'user',
+    'class': 'wizard-form'
+}}) }}
+    {% if form.vars.errors|length > 0 %}
+        <div class="form-custom-errors">
+            {% for error in form.vars.errors %}
+                <div class="form-custom-error">{{ error.message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="wizard-step-copy">
+        <span class="wizard-step-kicker">Etape 1</span>
+        <h3 class="wizard-step-title">Vos informations de compte</h3>
+        <p class="wizard-step-description">Renseignez vos informations principales pour creer votre espace candidat.</p>
+    </div>
+
+    <div class="row mb-1 w-100">
+        <div class="col-md-6">
+            {{ form_row(form.firstName) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_row(form.lastName) }}
+        </div>
+    </div>
+
+    {{ form_row(form.email) }}
+    {{ form_row(form.plainPassword.first) }}
+    {{ form_row(form.plainPassword.second) }}
+    {{ form_row(form.telNumber) }}
+    {{ form_row(form.location) }}
+
+    {{ form_widget(form.validez, {
+        'label': 'Continuer vers mon profil',
+        'attr': {
+            'class': 'btn connexion-bouton wizard-submit',
+            'data-loading-label': 'Creation du compte...'
+        }
+    }) }}
+{{ form_end(form) }}

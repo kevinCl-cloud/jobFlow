@@ -20,7 +20,7 @@ class CandidateProfile
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\Column(length: 100, nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $cvPath = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
