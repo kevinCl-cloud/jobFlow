@@ -2,16 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Entity\User;
 
-final class HomeController extends AbstractController
+final class SearchController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/search', name: 'app_search')]
     public function index(): Response
-    {   
+    {
         $user = $this->getUser();
         // verifier que $user est bien une instance de User
         if (!$user instanceof User){
@@ -20,8 +20,8 @@ final class HomeController extends AbstractController
             
         // reucperer le profile du candidat
         $candidateProfile = $user->getCandidateProfile();
-    
-        return $this->render('home/index.html.twig',[
+
+        return $this->render('search/index.html.twig', [
             'candidateProfile' => $candidateProfile,
         ]);
     }

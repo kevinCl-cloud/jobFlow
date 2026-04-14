@@ -6,55 +6,66 @@
 {% block body %}
 
 	<div class="hero-inner">
-		<h3 class="mt fw-bolder">Bonjour {{ app.user.firstName| capitalize }}</h3>
+		<h3 class="mt fw-bolder">Bonjour
+			{{ candidateProfile.user.firstname| capitalize }}</h3>
 		<p class="fw-bolder">Voici un appercu de votre activité</p>
 	</div>
 
 	<div class="container">
+		{% if candidateProfile.applies is not empty %}
+			<div class="info-candidature row justify-content-center">
 
-		<div class="info-candidature row justify-content-center">
-
-			<div class="col-6 col-md-3 mb-3">
-				<div class="d-flex flex-column flex-md-row align-items-center candidature-envoyee info">
-					<div class="nowrap logo-enveloppe"></div>
-					<div class="d-flex flex-column align-items-center align-items-md-start mt-2 nombre-candidature">
-						<p class="m-0">12</p>
-						<p class="m-0">Candidatures envoyées</p>
+				<div class="col-6 col-md-3 mb-3">
+					<div class="d-flex flex-column flex-md-row align-items-center candidature-envoyee info">
+						<div class="nowrap logo-enveloppe"></div>
+						<div class="d-flex flex-column align-items-center align-items-md-start mt-2 nombre-candidature">
+							<p class="m-0">12</p>
+							<p class="m-0">Candidatures envoyées</p>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="col-6 col-md-3 mb-3">
-				<div class="d-flex flex-column flex-md-row align-items-center reponse info">
-					<div class="logo-bulle-chat"></div>
-					<div class="d-flex flex-column align-items-center align-items-md-start mt-2 nombre-reponse">
-						<p class="m-0">3</p>
-						<p class="m-0">Réponses</p>
+				<div class="col-6 col-md-3 mb-3">
+					<div class="d-flex flex-column flex-md-row align-items-center reponse info">
+						<div class="logo-bulle-chat"></div>
+						<div class="d-flex flex-column align-items-center align-items-md-start mt-2 nombre-reponse">
+							<p class="m-0">3</p>
+							<p class="m-0">Réponses</p>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="col-6 col-md-3 mb-3">
-				<div class="d-flex flex-column flex-md-row align-items-center entretiens info">
-					<div class="logo-calendrier"></div>
-					<div class="d-flex flex-column align-items-center align-items-md-start mt-2 nombre-entretiens">
-						<p class="m-0">3</p>
-						<p class="m-0">Entretiens</p>
+				<div class="col-6 col-md-3 mb-3">
+					<div class="d-flex flex-column flex-md-row align-items-center entretiens info">
+						<div class="logo-calendrier"></div>
+						<div class="d-flex flex-column align-items-center align-items-md-start mt-2 nombre-entretiens">
+							<p class="m-0">3</p>
+							<p class="m-0">Entretiens</p>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="col-6 col-md-3 mb-3">
-				<div class="d-flex flex-column flex-md-row align-items-center sans-reponse info">
-					<div class="logo-horloge"></div>
-					<div class="d-flex flex-column align-items-center align-items-md-start mt-2 nombre-non-reponse">
-						<p class="m-0">3</p>
-						<p class="m-0">Sans réponses</p>
+				<div class="col-6 col-md-3 mb-3">
+					<div class="d-flex flex-column flex-md-row align-items-center sans-reponse info">
+						<div class="logo-horloge"></div>
+						<div class="d-flex flex-column align-items-center align-items-md-start mt-2 nombre-non-reponse">
+							<p class="m-0">3</p>
+							<p class="m-0">Sans réponses</p>
+						</div>
 					</div>
 				</div>
+
 			</div>
+		{% else %}
+			<div class="d-flex flex-column align-items-center mt-4 "> 
+				<div class="no-candidature">
+					<h3>Vous n'avez pas de candidature en cours</h3>
+				</div>
 
-		</div>
-
+				<div class="lancer-recherche">
+					<a href="{{ path('app_search') }}">Lancer une recherche</a>
+				</div>
+			</div>
+		{% endif %}
 	</div>
 {% endblock %}

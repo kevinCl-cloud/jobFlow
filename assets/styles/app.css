@@ -18,9 +18,59 @@ body {
     padding: 0px 50px;
 }
 
-li {
+nav > ul >li {
     padding: 0px 20px;
     border-radius: 15px;
+}
+
+.icone-profile {
+    display: block;
+    width: 60px;
+    height: 70px;
+    padding: 0;
+    background-image: url('../images/icone-profile.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.icone-profile:hover .sub-menu,
+.icone-profile:focus-within .sub-menu {
+    display: block;
+}
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    z-index: 1000;
+    min-width: 180px;
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+    transform: translateX(-50%);
+    overflow: hidden;
+}
+
+.sub-menu .nav-link {
+    padding: 0;
+}
+
+.sub-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: var(--couleur-ecriture);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.sub-menu a:hover {
+    background-color: var(--main-bg-color);
 }
 
 .inscription-bouton {
@@ -604,4 +654,26 @@ p {
         max-width: 100%;
         flex: 0 0 100%;
     }
+}
+
+.no-candidature {
+    color: var(--couleur-ecriture);
+}
+
+.lancer-recherche {
+    background-color: var(--bouton-couleur);
+    padding: 10px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.lancer-recherche a {
+    color: white;
+    font-size: medium;
+    text-decoration: none;
+
+}
+
+.lancer-recherche:hover {
+    background-color: rgb(113, 155, 247);
 }
